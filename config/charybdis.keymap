@@ -85,7 +85,7 @@
 &kp TAB     &kp Q         &kp W   &kp E      &kp R   &kp T        &kp Y      &kp U      &kp I      &kp O    &kp P      &kp LEFT_BRACKET
 &kp LSHIFT  &kp A         &kp S   &kp D      &kp F   &kp G        &kp H      &kp J      &kp K      &kp L    &kp SEMI   &kp APOS
 &kp LCTRL   &kp Z         &kp X   &kp C      &kp V   &kp B        &kp N      &kp M      &kp COMMA  &kp DOT  &kp SLASH  &kp RIGHT_BRACKET
-                                  &kp SPACE  &mo BTMD   &mkp LCLK    &kp ENTER  &mt LC(LS(LA(LGUI))) SPACE
+                                  &kp SPACE  &mo BTMD   &mkp LCLK    &kp ENTER  &kp ENTER
                                              &mo MOD   &mkp RCLK    &kp LGUI
             >;
         };
