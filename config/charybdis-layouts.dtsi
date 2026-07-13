@@ -72,8 +72,8 @@
             , <&key_physical_attrs 100 100  380  520    0   0   0>   // 49 MO(BTMD)     (left-bottom, inner)
             , <&key_physical_attrs 100 100  300  420    0   0   0>   // 50 LCLK         (left-top, inner)
             , <&key_physical_attrs 100 100 1020  420    0   0   0>   // 51 ENTER work   (right-top, right)
-            , <&key_physical_attrs 100 100  480  520    0   0   0>   // 52 MO(MOD)      (left-bottom, outer)
-            , <&key_physical_attrs 100 100  400  414    0   0   0>   // 53 RCLK         (left-top, middle)
+            , <&key_physical_attrs 100 100  400  414    0   0   0>   // 52 MO(MOD)      (left-top, middle)
+            , <&key_physical_attrs 100 100  480  520    0   0   0>   // 53 RCLK         (left-bottom, right)
             , <&key_physical_attrs 100 100 1000  520    0   0   0>   // 54 LGUI         (right-bottom)
             , <&key_physical_attrs 100 100  920  414    0   0   0>   // 55 ENTER recov. (right-top, left)
             ;
