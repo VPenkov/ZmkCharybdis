@@ -63,18 +63,19 @@
             , <&key_physical_attrs 100 100 1300  338       0     0     0>
             , <&key_physical_attrs 100 100 1400  338       0     0     0>
 
-            // Thumb Clusters
-            //                       w   h    x    y     rot    rx    ry
-            , <&key_physical_attrs 100 100  348  414    900    398   790>
-            , <&key_physical_attrs 100 100  418  414    1500   398   790>
-            , <&key_physical_attrs 100 100  518  420    1500   398   790>
-            , <&key_physical_attrs 100 100  382  514    1500   398   790>
-            , <&key_physical_attrs 100 100  482  520    1500   398   790>
-            , <&key_physical_attrs 100 100 1052  420 (-3000)  1102   790>
-            , <&key_physical_attrs 100 100 1067  414 (-1500)  1102   790>
-            , <&key_physical_attrs 100 100 1052  520 (-3000)  1102   790>
-            // Recovered dedicated Enter switch, matrix cell RC(4,7)
-            , <&key_physical_attrs 100 100 1152  520 (-3000)  1102   790>
+            // Thumb Clusters — coordinates arranged to match the physical board so
+            // ZMK Studio renders them in the right places. Order below is by POSITION
+            // index (48-55), which must follow the transform map order, not the
+            // visual left-to-right layout.
+            //                       w   h    x    y   rot  rx  ry
+            , <&key_physical_attrs 100 100  500  414    0   0   0>   // 48 SPACE        (left-top, outer)
+            , <&key_physical_attrs 100 100  380  520    0   0   0>   // 49 MO(BTMD)     (left-bottom, inner)
+            , <&key_physical_attrs 100 100  300  420    0   0   0>   // 50 LCLK         (left-top, inner)
+            , <&key_physical_attrs 100 100 1020  420    0   0   0>   // 51 ENTER work   (right-top, right)
+            , <&key_physical_attrs 100 100  480  520    0   0   0>   // 52 MO(MOD)      (left-bottom, outer)
+            , <&key_physical_attrs 100 100  400  414    0   0   0>   // 53 RCLK         (left-top, middle)
+            , <&key_physical_attrs 100 100 1000  520    0   0   0>   // 54 LGUI         (right-bottom)
+            , <&key_physical_attrs 100 100  920  414    0   0   0>   // 55 ENTER recov. (right-top, left)
             ;
     };
 };
