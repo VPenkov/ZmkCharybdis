@@ -143,6 +143,45 @@ The typical loop after editing `config/charybdis.keymap`:
 For runtime tweaks without a rebuild, the right-half firmware ships with
 [ZMK Studio] support — see [Modify Key Mappings](README.md#modify-key-mappings).
 
+---
+
+## Debugging with USB logging
+
+To see whether a key press actually reaches the firmware (e.g. diagnosing a dead
+switch), build a temporary **right-half** logging firmware that streams matrix
+events over a USB serial console.
+
+The catch: this board has a *single* USB CDC port, and the normal right build
+already uses it for Studio (`snippet: studio-rpc-usb-uart`). USB logging needs
+that same port as `zephyr,console`, so you must swap the snippet and turn Studio
+off — otherwise the build fails (`zephyr_console` undeclared, then
+`zmk,studio-rpc-uart` undeclared). Three temporary changes:
+
+1. **[`build.yaml`](build.yaml)** — in the `charybdis_right` entry, replace
+   `snippet: studio-rpc-usb-uart` with `snippet: cdc-acm-console` (Zephyr's
+   snippet that creates the CDC node and sets `zephyr,console`).
+2. **[`config/charybdis_right.conf`](config/charybdis_right.conf)** — add
+   `CONFIG_ZMK_USB_LOGGING=y`.
+3. **[`boards/shields/charybdis-bt/charybdis_right.conf`](boards/shields/charybdis-bt/charybdis_right.conf)**
+   — set `CONFIG_ZMK_STUDIO=n`. (Its `=y` overrides `config/`, and Studio's UART
+   RPC transport won't compile once its snippet is gone.)
+
+Then build, flash the **right** half, and keep it on USB:
+
+```sh
+ls /dev/tty.usbmodem*                 # find the CDC console (Studio is off, so just one)
+screen /dev/tty.usbmodemXXXX 115200   # or: tio /dev/tty.usbmodemXXXX   (Ctrl-A K to quit screen)
+```
+
+ZMK logs each key press/release with its **position** — the 0-based index into
+the keymap. Press a known-good key to learn what a real event looks like, then
+press the suspect key: no log line = the press never reached the matrix
+(hardware — switch/diode/solder), a log line = the matrix read it (look higher
+up, at keymap/HID).
+
+**Revert all three changes** once you're done so the normal Studio firmware
+returns.
+
 [ZMK]: https://zmk.dev/
 [ZMK Studio]: https://zmk.studio/
 [ZMK Toolchain Setup]: https://zmk.dev/docs/development/local-toolchain/setup
