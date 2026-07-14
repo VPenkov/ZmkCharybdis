@@ -1,8 +1,8 @@
+layout: {zmk_keyboard: charybdis}
 layers:
-  '0': ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', TAB, Q, W, E, R, T, Y, U, I, O, P, \, LSHIFT, A, S, D, F, G, H, J, K, L, ;, '''', LCTRL, Z, X,
-    C, V, B, N, M, ',', ., /, RSHIFT, BSPC, '1', LGUI, L CLK, SPACE, R CLK, L CLK, ENTER]
+  '0': [ESC, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', BACK SPACE, TAB, Q, W, E, R, T, Y, U, I, O, P, \, LSHIFT, A, S, D, F, G, H, J, K, L, ;, '''', '~',
+    Z, X, C, V, B, N, M, ',', ., '[', ']', LGUI, '1', LCTRL, SPACE, '2', LALT, LGUI, ENTER]
   '1':
-  - ESC
   - F1
   - F2
   - F3
@@ -12,106 +12,107 @@ layers:
   - F7
   - F8
   - F9
+  - F10
   - F11
-  - +
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - Ctl+ PG UP
-  - Ctl+ T
-  - Ctl+ PG DN
-  - VOL UP
-  - PG UP
-  - HOME
-  - UP
-  - END
-  - PSCRN
   - DEV TOOLS
   - {t: ▽, type: trans}
-  - CAPS
-  - Alt+ LEFT
-  - Alt+ TAB
-  - Alt+ RIGHT
-  - VOL DN
-  - PG DN
+  - {t: ▽, type: trans}
+  - UP
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '-'
+  - +
+  - {t: ▽, type: trans}
   - LEFT
   - DOWN
   - RIGHT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - Ctl+ W
-  - PP
-  - MUTE
-  - {t: ▽, type: trans}
+  - PREV
+  - PLAY PAUSE
+  - NEXT
   - {t: ▽, type: trans}
   - '['
   - ']'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - DEL
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - VOLUME DOWN
+  - VOLUME UP
+  - MUTE
+  - {t: ▽, type: trans}
+  - \
+  - /
+  - {t: ▽, type: trans}
   - {type: held}
-  - {t: '2', h: toggle}
+  - {t: ▽, type: trans}
+  - HOME
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - END
   '2':
+  - ''
   - {t: BT, h: '0'}
   - {t: BT, h: '1'}
   - {t: BT, h: '2'}
+  - {t: BT, h: '3'}
+  - {t: BT, h: '4'}
   - ''
   - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - BOOT LDR
   - BT CLR
   - ''
   - ''
   - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - OUT TOG
   - ''
   - ''
   - ''
   - ''
   - ''
   - BOOT LDR
-  - BOOT LDR
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - {t: '2', h: toggle}
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - R CLK
+  - {type: held}
+  - {t: ▽, type: trans}
+  - M CLK
+  - L CLK
