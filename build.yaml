@@ -12,9 +12,10 @@ include:
     keymap: qwerty
     format: bt
     artifact-name: charybdis_qwerty_right
-    # TEMP: Studio-over-USB snippet removed so USB logging can own the CDC
-    # console for Enter-key debugging. Restore this line when done.
-    # snippet: studio-rpc-usb-uart
+    # TEMP: swapped Studio-over-USB for Zephyr's cdc-acm-console snippet, which
+    # creates the CDC node + sets zephyr,console so CONFIG_ZMK_USB_LOGGING can
+    # attach. Restore `snippet: studio-rpc-usb-uart` when Enter debugging is done.
+    snippet: cdc-acm-console
   # Firmware Reset
   - board: nice_nano_v2
     shield: settings_reset
