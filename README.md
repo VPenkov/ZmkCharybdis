@@ -32,6 +32,12 @@ There are a few things to note about how the pre-built firmware is configured:
 - A separate branch builds the Bluetooth/USB firmware using [inorichi's driver](https://github.com/inorichi/zmk-pmw3610-driver?tab=readme-ov-file) as an alternative to badjeff's driver.
 - Pete Johanson (creator and lead of the ZMK firmware) developed a feature ([pointers-move-scroll](https://github.com/zmkfirmware/zmk/pull/2027)) that allows mouse keys to move and scroll. A successor feature ([pointers-with-input-processors](https://github.com/zmkfirmware/zmk/pull/2477)) was then developed that allows more flexibility. This feature is what will eventually be merged into the main ZMK branch, and it's what is used by this repo to build the firmware. Although it's not guranteed to be stable, it hasn't caused any noticible issues. That being said, if you'd prefer to use pointers-move-scroll which is in a stable state, you can update the west.yaml and adapt the config files accordingly.
 
+## Building & Flashing
+
+For a step-by-step guide to building the firmware (GitHub Actions or a local
+`west` build) and flashing it onto both halves, see **[BUILD.md](BUILD.md)**.
+The quick flashing steps are below.
+
 ## Flashing the Firmware
 
 Follow the steps below to flash the firmware
