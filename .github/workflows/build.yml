@@ -29,9 +29,11 @@ jobs:
     uses: ./.github/workflows/user_config_build.yaml
     # uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
 
-#  keymap_images:
-#    needs: build
-#    permissions:
-#      contents: write
-#    uses: ./.github/workflows/draw_keymaps.yaml
+  keymap_images:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/draw_keymaps.yaml
+    with:
+      west_config_path: config
+      amend_commit: false
     # credit to https://github.com/caksoylar/keymap-drawer
