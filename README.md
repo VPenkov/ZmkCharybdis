@@ -2,10 +2,7 @@
 
 ## Intro
 
-This repository offers pre-configured ZMK firmware designed for Wireless Charybdis keyboards, supporting both the ubiquitous QWERTY layout and the optimized Colemak DH layout. You can choose from two configurations:
-
-- Bluetooth and USB
-- Dongle
+This repository holds the ZMK firmware for a wireless Charybdis split keyboard with a PMW3610 trackball. It runs a customized QWERTY layout spread across three layers (see [Keymaps & Layers](#keymaps--layers)) and builds as a Bluetooth/USB configuration with the right half as the central.
 
 Additionally, this repository automatically generates SVG images of all layers in the keymap, and adds it to the README. It also provides high level instructions and resources on how to customize and build the firmware to meet your specific needs.
 
@@ -13,13 +10,11 @@ Check out the [Charybdis Mini Wireless build guide](https://github.com/280Zo/cha
 
 ## Usage
 
-If you'd like to use the pre-built firmware the files can be found in the [Actions Workflows](https://github.com/280Zo/charybdis-wireless-mini-zmk-firmware/actions?query=is%3Acompleted+branch%3Amain). To download them, log into Github, click the link, select the latest run that passed on the main branch, and download the applicable firmware. There are five firmware artifacts to choose from. If you're unsure which one to use, you probably want the firmware-charybdis-qwerty build.
+If you'd like to use the pre-built firmware, the files are attached to each successful [Actions run](../../actions?query=branch%3Amain) — open the latest run on `main` and download the artifacts. See **[BUILD.md](BUILD.md)** for the full build-and-flash walkthrough. This repo builds three artifacts:
 
-- **firmware-charybdis-qwerty** - Bluetooth/USB with QWERTY layout
-- **firmware-charybdis-qwerty-dongle** - Dongle with QWERTY layout
-- **firmware-charybdis-colemak** - Bluetooth/USB with Colemak DH layout
-- **firmware-charybdis-colemak-dongle** - Dongle with Colemak DH layout
-- **firmware-reset-nanov2** - Reset the firmware completely
+- **charybdis_qwerty_left** — left half (peripheral)
+- **charybdis_qwerty_right** — right half (central; includes ZMK Studio support)
+- **firmware_reset_nano_v2** — resets a controller's stored settings/pairings
 
 There are a few things to note about how the pre-built firmware is configured:
 
@@ -57,20 +52,33 @@ Follow the steps below to flash the firmware
 
 ## Keymaps & Layers
 
-The base layer uses [home row mods](https://precondition.github.io/home-row-mods) to make typing as efficient and comfortable as possible. To reduce hand movement, extra attention has also been given to making sure cursor, scrolling, and mouse button operations are as seamless as possible.
+This build has three layers. The diagram at the end of this section renders all three, stacked top to bottom: **Base**, **MOD**, and **BTMD**.
 
-Review the layer maps below to see how each one functions. Then either modify the keymap to fit your needs, or start using these defaults to become more familiar with them.
+### Base
 
-Here are a few tips for a quick start:
+Standard QWERTY. A few keys differ from a stock layout: the outer-left key on the bottom row is `~`, `Backspace` sits at the top-right with `\` directly below it, and the bottom-right cluster is `, . [ ]`. The thumbs are `GUI · MO(MOD) · Ctrl · Space` on the upper row and `MO(BTMD) · Alt · GUI · Enter` on the lower row. The trackball moves the cursor.
 
-- The bluetooth keys on the EXTRAS layer allow you to select which bluetooth pairing you want, BT-CLR clears the pairing on the selected profile.
+### MOD — hold the `MO(MOD)` thumb key
 
-- The left most thumb button has multiple functions
-  - When held, the function of the trackball is changed from moving the cursor to scrolling.
-  - When double tapped, it will reduce the cursor speed for more precision, and activate the mouse layer.
-  - When single tapped it outputs the escape key.
+Function and navigation layer. Holding it also switches the trackball from moving the cursor to **scrolling**.
 
-![keymap images](keymap-drawer/charybdis.svg)
+- **F1–F12** across the top row.
+- **Arrows** on `W` / `A` / `S` / `D`.
+- **Media transport** on `H` / `J` / `K` — previous, play/pause, next.
+- **Volume** on `N` / `M` / `,` — down, up, mute.
+- A right-hand symbol block: `-` `+` above `[` `]`, plus `/`.
+- **Home** and **End** on the `Space` and `Enter` thumb keys.
+- Keys that aren't reassigned are transparent, so they fall through to the base layer while `MOD` is held.
+
+### BTMD — hold the `MO(BTMD)` thumb key
+
+Bluetooth and mouse layer. The trackball keeps moving the cursor here.
+
+- **Bluetooth profiles** `BT 0`–`BT 4` on the number row; `BT CLR` clears the selected profile's pairing.
+- **Output toggle** (USB/Bluetooth) and **bootloader** on the outer corners.
+- **Mouse buttons** (left / middle / right click) on the thumb keys.
+
+![Charybdis keymap — Base, MOD, and BTMD layers](keymap-drawer/charybdis.svg)
 
 ## Modify Key Mappings
 

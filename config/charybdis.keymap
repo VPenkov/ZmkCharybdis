@@ -92,12 +92,12 @@
 
         MOD {
             bindings = <
-&kp F1  &kp F2      &kp F3             &kp F4           &kp F5         &kp F6               &kp F7     &kp F8     &kp F9    &kp F10    &kp F11          &trans
-&trans  &kp LA(F4)  &kp C_VOLUME_UP    &trans           &trans         &kp GRAVE            &trans     &kp HOME   &trans    &kp END    &kp F12          &kp PLUS
-&trans  &trans      &kp C_PLAY_PAUSE   &trans           &kp MINUS      &trans               &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans           &kp RIGHT_BRACE
-&trans  &trans      &kp C_VOLUME_DOWN  &kp PRINTSCREEN  &kp DEL        &kp LG(PAGE_DOWN)    &kp EQUAL  &trans     &kp LBKT  &kp SLASH  &kp BACKSLASH    &trans
-                                       &trans           &trans         &trans               &trans
-                                                        &trans         &trans               &trans     &trans
+&kp F1  &kp F2      &kp F3             &kp F4           &kp F5         &kp F6               &kp F7     &kp F8     &kp F9    &kp F10    &kp F11          &kp F12
+&trans  &trans      &kp UP             &trans           &trans         &trans               &trans            &trans            &trans      &trans     &kp MINUS  &kp PLUS
+&trans  &kp LEFT    &kp DOWN           &kp RIGHT        &kp MINUS      &trans               &kp C_PREV        &kp C_PLAY_PAUSE  &kp C_NEXT  &trans     &kp LBKT   &kp RBKT
+&trans  &trans      &trans             &trans           &trans         &trans               &kp C_VOLUME_DOWN  &kp C_VOLUME_UP   &kp C_MUTE  &kp SLASH  &trans     &trans
+                                       &trans           &trans         &trans               &kp HOME
+                                                        &trans         &trans               &trans     &kp END
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
