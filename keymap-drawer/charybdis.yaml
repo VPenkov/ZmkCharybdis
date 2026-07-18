@@ -109,11 +109,11 @@ layers:
   - {t: ▽, type: trans}
   - {type: held}
   - {t: ▽, type: trans}
-  - HOME
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - DEL
-  - END
+  - {t: ▽, type: trans}
   '2':
   - ''
   - {t: BT, h: '0'}
