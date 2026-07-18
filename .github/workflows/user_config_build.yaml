@@ -13,11 +13,6 @@ on:
         default: "config"
         required: false
         type: string
-      shield_path:
-        description: "Path to the shields directory"
-        default: "boards/shields/charybdis"
-        required: false
-        type: string
       keymap_path:
         description: "Path to the keymap directory"
         default: "boards/shields/charybdis/keymaps"
