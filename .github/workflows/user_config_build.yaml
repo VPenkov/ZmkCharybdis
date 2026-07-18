@@ -127,17 +127,10 @@ jobs:
               mv -v "$base_config_path/charybdis-layouts.dtsi" \
               "${GITHUB_WORKSPACE}/boards/shields/charybdis-${{ env.format }}/"
 
-              # Copy active keymap to the board directory & adjust for bt/dongle format
+              # Copy active keymap to the board directory
               cp -Rv "$GITHUB_WORKSPACE/${{ inputs.keymap_path }}/${{ env.keymap }}.keymap" \
                 "$base_config_path/charybdis.keymap"
               echo "format: ${{ env.format }}"
-              case "${{ env.format }}" in
-                *bt*)
-                  echo "converting trackball device to bt/usb format"
-                  sed -i 's/device = <&vtrackball>;/device = <\&trackball>;/g' "$base_config_path/charybdis.keymap"
-                  grep "device = <" "$base_config_path/charybdis.keymap"
-                  ;;
-              esac
             fi
           fi
 
