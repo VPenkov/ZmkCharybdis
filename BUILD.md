@@ -71,25 +71,30 @@ west update
 west zephyr-export
 ```
 
-> `west update` fetches ZMK from the `feat/pointers-with-input-processors`
-> branch plus badjeff's PMW3610 driver and input-relay/listener modules. It can
-> take a few minutes the first time.
+> `west update` fetches mainline ZMK (pinned in `config/west.yml`) plus
+> badjeff's PMW3610 driver. It can take a few minutes the first time.
 
 ### Build each half
 
 Run one build per shield. The `-c` clears the previous build so stale config
 never leaks between the two halves:
 
+> **Board name:** since ZMK moved to Zephyr's hardware model v2, the build
+> target is `nice_nano//zmk`, not `nice_nano_v2` — the legacy name no longer
+> resolves. The empty middle field is the SoC, omitted because `nice_nano` has
+> only one; `zmk` is the board variant. Revision defaults to `2.0.0`, so this
+> selects a nice!nano v2. Quote it: the `//` is a comment in some shells.
+
 ```sh
 # Right half (central) — includes ZMK Studio support
-west build -p -s zmk/app -b nice_nano_v2 -- \
+west build -p -s zmk/app -b "nice_nano//zmk" -- \
   -DSHIELD=charybdis_right \
   -DZMK_CONFIG="$(pwd)/config" \
   -DSNIPPET=studio-rpc-usb-uart
 cp build/zephyr/zmk.uf2 charybdis_right.uf2
 
 # Left half (peripheral)
-west build -p -s zmk/app -b nice_nano_v2 -- \
+west build -p -s zmk/app -b "nice_nano//zmk" -- \
   -DSHIELD=charybdis_left \
   -DZMK_CONFIG="$(pwd)/config"
 cp build/zephyr/zmk.uf2 charybdis_left.uf2
@@ -98,7 +103,7 @@ cp build/zephyr/zmk.uf2 charybdis_left.uf2
 Optionally build the settings-reset image (handy to keep around):
 
 ```sh
-west build -p -s zmk/app -b nice_nano_v2 -- -DSHIELD=settings_reset
+west build -p -s zmk/app -b "nice_nano//zmk" -- -DSHIELD=settings_reset
 cp build/zephyr/zmk.uf2 firmware_reset_nano_v2.uf2
 ```
 
