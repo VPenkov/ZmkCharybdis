@@ -47,21 +47,28 @@
         device = <&vtrackball>;
         layers = <1>;
         evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_MISC>;
+        x-input-code = <INPUT_REL_HWHEEL>;
         y-input-code = <INPUT_REL_WHEEL>;
         y-invert;
         scale-multiplier = <1>;
         scale-divisor = <4>;
-        bindings = <&ib_wheel_scaler 1 14>;
+        bindings = <&ib_wheel_scaler 1 14>, <&ib_hwheel_scaler 1 14>;
     };
 
-    /* define a resolution down scaler only for INPUT_REL_WHEEL */
+    /* resolution down scalers -- one per axis, since input-code is a single code */
 
     ib_wheel_scaler: ib_wheel_scaler {
         compatible = "zmk,input-behavior-scaler";
         #binding-cells = <2>;
         evt-type = <INPUT_EV_REL>;
         input-code = <INPUT_REL_WHEEL>;
+    };
+
+    ib_hwheel_scaler: ib_hwheel_scaler {
+        compatible = "zmk,input-behavior-scaler";
+        #binding-cells = <2>;
+        evt-type = <INPUT_EV_REL>;
+        input-code = <INPUT_REL_HWHEEL>;
     };
 
     /* adjust cooldown waiting period for mouse key layer after activated */
@@ -76,6 +83,19 @@
 #define MOD 1
 #define BTMD 2
 
+    /* Thumb layer-taps: hold = layer, tap = Home/End. */
+
+    behaviors {
+        thumb_lt: thumb_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -85,8 +105,8 @@
 &kp TAB     &kp Q         &kp W   &kp E      &kp R   &kp T        &kp Y      &kp U      &kp I      &kp O    &kp P      &kp BACKSLASH
 &kp LSHIFT  &kp A         &kp S   &kp D      &kp F   &kp G        &kp H      &kp J      &kp K      &kp L    &kp SEMI   &kp APOS
 &kp GRAVE   &kp Z         &kp X   &kp C      &kp V   &kp B        &kp N      &kp M      &kp COMMA  &kp DOT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
-                                  &kp LGUI   &mo MOD    &kp LCTRL    &kp SPACE
-                                             &mo BTMD   &kp LALT    &kp LGUI  &kp ENTER
+                                  &kp LGUI   &thumb_lt MOD HOME   &kp LCTRL    &kp SPACE
+                                             &thumb_lt BTMD END   &kp LALT    &kp LGUI  &kp ENTER
             >;
         };
 
